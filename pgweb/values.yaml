@@ -104,7 +104,7 @@ pgweb:
       value: main
   #   - name: "foo"
   #     value: "bar"
-  replicaCount: 3
+  replicaCount: 1
   image:
     repository: ghcr.io/jack230230/pgweb
     pullPolicy: IfNotPresent
