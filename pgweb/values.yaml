@@ -109,7 +109,7 @@ pgweb:
     repository: ghcr.io/jack230230/pgweb
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "main"
+    tag: "d918bd2"
   imagePullSecrets:
     - name: pgweb
   nameOverride: ""
