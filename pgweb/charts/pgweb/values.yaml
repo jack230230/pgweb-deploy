@@ -70,9 +70,8 @@ ingress:
     - host: pgweb-53t9jl6x4.forkmain.cloud
       paths:
         - pathType: ImplementationSpecific
-          path: /pgweb(/|$)(.*)
+          path: /
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
   tls: []
 resources: {}
 # We usually recommend not to specify default resources and to leave this as a conscious
