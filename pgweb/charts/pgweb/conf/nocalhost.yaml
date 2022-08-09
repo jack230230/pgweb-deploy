@@ -1,0 +1,37 @@
+containers:
+  - name: {{ .Chart.Name }}
+    dev:
+      gitUrl: {{ .Values.nocalhost.gitUrl }}
+      image: ghcr.io/h8r-dev/dev-container/dev-golang:1.18
+      shell: bash
+      workDir: /home/nocalhost-dev
+      command:
+        run: [ "air" ]
+        debug: [ "dlv", "--headless", "--log", "--listen", ":9009", "--api-version", "2", "--accept-multiclient", "debug", "main.go" ]
+      debug:
+        language: "go"
+        remoteDebugPort: 9009
+      hotReload: false
+      sync:
+        type: send
+        filePattern:
+          - ./
+        ignoreFilePattern:
+          - ".git"
+          - ".idea"
+          - ".github"
+      resources:
+        limits:
+          cpu: "4"
+          memory: 4Gi
+        requests:
+          cpu: "0.1"
+          memory: 256Mi
+      persistentVolumeDirs: 
+        - path: "/home/nocalhost-dev"
+          capacity: "20Gi"
+        - path: "/go"
+          capacity: "20Gi"
+      env:
+        - name: "GOCACHE"
+          value: "/go/.cache"
